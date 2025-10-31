@@ -3,25 +3,31 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Dashboard;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
-// Login
+// Login and Logout
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
 
-// Welcome
-Route::get('/dashboard/welcome', function () {
-    return view('welcome_admin');
-})->name('welcome-admin');
+    return redirect('/login');
+})->name('logout');
 
 // Dashboard
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/welcome', function () {
+        return view('welcome_admin');
+    })->name('welcome-admin');
 });
 
 // Barang
