@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Admin</title>
+    <link rel="stylesheet" href="{{ asset('style/iframe.css') }}">
     <style>
         * {
             margin: 0;
@@ -17,10 +18,12 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #FFF8F0 0%, #F3EADF 100%);
+            background-color: #FFF8F0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             position: relative;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         /* Decorative circles */
@@ -57,8 +60,8 @@
             text-align: center;
             position: relative;
             z-index: 10;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(15px);
+            background: #FFF8F0;
+            /* ubah dari transparan jadi solid */
             padding: 4rem 6rem;
             border-radius: 30px;
             border: 2px solid rgba(47, 46, 51, 0.1);

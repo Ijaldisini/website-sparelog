@@ -21,6 +21,8 @@
                         <span>Manajemen Stok</span>
                     </a>
 
+                    <div class="main-content create-barang"></div>
+
                     <a href="{{ route('transaksi.index') }}" class="menu-btn">
                         <span>Transaksi</span>
                     </a>

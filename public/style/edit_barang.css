@@ -1,0 +1,127 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Posisikan card di tengah layar */
+.main-content {
+    background-color: #fff8f0 !important;
+    border-radius: 16px;
+    padding: 3rem 4rem;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+    /* trik agar tetap center walau ada sidebar kiri */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Judul form */
+.form-title {
+    color: #2f2e33;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 1rem;
+}
+
+/* Grup input */
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #2f2e33;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 2px solid #dee2e6;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fff8f0;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #5a6268;
+    box-shadow: 0 0 8px rgba(90, 98, 104, 0.3);
+}
+
+/* Tombol */
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-primary {
+    background-color: #5a6268;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4e555b;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #dc3545;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #b52a38;
+    transform: translateY(-2px);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1.5rem;
+        margin: 1rem;
+        position: static;
+        transform: none;
+        top: auto;
+        left: auto;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+}

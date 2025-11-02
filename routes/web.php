@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\BarangController;
 
 
 Route::get('/', function () {
@@ -31,9 +32,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Barang
-Route::middleware('auth')->group(function () {
-    Route::resource('barang', App\Http\Controllers\Barang::class);
-});
+Route::resource('barang', BarangController::class)->middleware('auth');
 
 // Transaksi
 Route::middleware('auth')->group(function () {

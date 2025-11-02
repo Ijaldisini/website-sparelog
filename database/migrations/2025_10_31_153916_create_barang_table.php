@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -16,6 +17,7 @@ return new class extends Migration
             $table->string('nama_barang');
             $table->decimal('harga', 10, 2);
             $table->integer('stok')->default(0);
+            $table->date('tanggal_masuk')->nullable();
             $table->decimal('hpp', 10, 2)->default(0);
             $table->foreignId('id_supplier')->constrained('supplier')->onDelete('cascade');
             $table->timestamps();

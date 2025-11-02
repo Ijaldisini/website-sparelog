@@ -4,15 +4,15 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2F2E33;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2f2e33;
 }
 
 /* Dashboard Wrapper - Background Luar */
 .dashboard-wrapper {
     width: 100%;
     height: 100vh;
-    background-color: #2F2E33;
+    background-color: #2f2e33;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,19 +26,21 @@ body {
     height: 100%;
     width: 100%;
     max-width: 1400px;
-    overflow: hidden;
+    overflow: visible; /* biar shadow terlihat */
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    gap: 1rem; /* 🔥 Tambahkan jarak antara sidebar & main-content */
 }
 
 /* Sidebar */
 .sidebar {
     width: 280px;
-    background: #FFF8F0;
+    background: #fff8f0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 16px 0 0 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .sidebar-content {
@@ -51,6 +53,7 @@ body {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
     border-bottom: 2px solid #dee2e6;
+    cursor: pointer; /* agar terlihat bisa diklik */
 }
 
 .logo-img {
@@ -58,6 +61,11 @@ body {
     height: 100%;
     margin-bottom: 1rem;
     object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
 }
 
 /* Menu Section */
@@ -67,14 +75,15 @@ body {
     gap: 1rem;
 }
 
+/* Tombol Menu */
 .menu-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    background-color: #6c757d;
-    color: white;
+    background-color: #fff8f0;
+    color: #2f2e33;
     text-decoration: none;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -83,8 +92,18 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Saat tombol aktif */
+.menu-btn.active {
+    background-color: #5a6268;
+    color: #ffffff;
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover effect */
 .menu-btn:hover {
     background-color: #5a6268;
+    color: #ffffff;
     transform: translateX(5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -136,9 +155,10 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #FFF8F0;
-    border-radius: 0 16px 16px 0;
+    background-color: #fff8f0 !important;
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .main-content iframe {
@@ -153,20 +173,22 @@ body {
     .dashboard-wrapper {
         padding: 0.5rem;
     }
-    
+
     .main-dashboard {
         border-radius: 12px;
+        flex-direction: column;
+        gap: 0.5rem;
     }
-    
+
     .sidebar {
-        width: 220px;
-        border-radius: 12px 0 0 12px;
+        width: 100%;
+        border-radius: 12px;
     }
-    
+
     .main-content {
-        border-radius: 0 12px 12px 0;
+        border-radius: 12px;
     }
-    
+
     .logo-img {
         width: 60px;
         height: 60px;

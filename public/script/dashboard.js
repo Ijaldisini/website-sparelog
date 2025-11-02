@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuButtons = document.querySelectorAll(".menu-btn");
     const logoBtn = document.getElementById("logo-btn");
 
-    // Navigasi antar menu
     menuButtons.forEach((btn) => {
         btn.addEventListener("click", function (e) {
             e.preventDefault();
@@ -11,9 +10,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Klik logo => tampilkan halaman Welcome Admin
     logoBtn.addEventListener("click", function (e) {
         e.preventDefault();
         iframe.src = "/dashboard/welcome";
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".menu-btn");
+    const logo = document.querySelector(".logo-img");
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", function () {
+            buttons.forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+
+    if (logo) {
+        logo.addEventListener("click", function () {
+            buttons.forEach((b) => b.classList.remove("active"));
+        });
+    }
 });
