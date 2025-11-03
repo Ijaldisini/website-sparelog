@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_transaksi');
-            $table->dateTime('tanggal_transaksi');
-            $table->integer('jumlah_barang');
-            $table->decimal('total_transaksi', 10, 2);
+            $table->string('nomor_polisi');
+            $table->string('nama_pelanggan');
+            $table->date('tanggal');
+            $table->decimal('total_harga', 15, 2)->default(0);
             $table->timestamps();
         });
     }

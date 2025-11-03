@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\TransaksiController;
 
 
 Route::get('/', function () {
@@ -32,8 +33,10 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('barang', BarangController::class)->middleware('auth');
 
 // Transaksi
-Route::middleware('auth')->group(function () {
-    Route::resource('transaksi', App\Http\Controllers\Transaksi::class);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
+    Route::get('/api/barang/{nama}', [TransaksiController::class, 'getHarga']);
 });
 
 // Riwayat Transaksi
