@@ -29,26 +29,51 @@ class BarangController extends Controller
     // Simpan barang
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_barang' => 'required|string|max:255',
-            'harga' => 'required|numeric|min:0',
-            'stok' => 'required|integer|min:0',
-            'tanggal_masuk' => 'required|date',
-            'id_supplier' => 'required|exists:supplier,id',
-        ]);
+        try {
+            $request->validate([
+                'nama_barang' => 'required|string|max:255',
+                'harga' => 'required|numeric|min:1000',
+                'stok' => 'required|integer|min:1', // stok tidak boleh 0
+                'tanggal_masuk' => 'required|date',
+                'id_supplier' => 'required|exists:supplier,id',
+            ]);
 
-        $hpp = $request->hpp ?? ($request->harga - ($request->harga * 0.1));
+            if ($request->harga % 1000 !== 0) {
+                return redirect()->back()->with('error', 'Harga harus dalam satuan ribuan!')->withInput();
+            }
 
-        Barang::create([
-            'nama_barang' => $request->nama_barang,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
-            'hpp' => $hpp,
-            'id_supplier' => $request->id_supplier,
-            'tanggal_masuk' => $request->tanggal_masuk,
-        ]);
+            $hpp = $request->harga;
+            $harga_jual = $hpp + ($hpp * 0.1);
 
-        return redirect()->route('barang.index')->with('success', 'Barang berhasil ditambahkan!');
+            $barangLama = Barang::where('nama_barang', $request->nama_barang)
+                ->where('id_supplier', $request->id_supplier)
+                ->first();
+
+            if ($barangLama) {
+                $barangLama->update([
+                    'stok' => $barangLama->stok + $request->stok,
+                    'harga' => $harga_jual,
+                    'hpp' => $hpp,
+                    'tanggal_masuk' => $request->tanggal_masuk,
+                ]);
+
+                return redirect()->route('barang.index')->with('success', 'Stok barang berhasil ditambahkan!');
+            } else {
+
+                Barang::create([
+                    'nama_barang' => $request->nama_barang,
+                    'harga' => $harga_jual,
+                    'stok' => $request->stok,
+                    'hpp' => $hpp,
+                    'id_supplier' => $request->id_supplier,
+                    'tanggal_masuk' => $request->tanggal_masuk,
+                ]);
+
+                return redirect()->route('barang.index')->with('success', 'Barang baru berhasil ditambahkan!');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('barang.index')->with('error', 'Barang gagal ditambahkan!');
+        }
     }
 
     // Form edit barang
@@ -62,24 +87,33 @@ class BarangController extends Controller
     // Update barang
     public function update(Request $request, $id)
     {
-        $barang = Barang::findOrFail($id);
+        try {
+            $barang = Barang::findOrFail($id);
 
-        $request->validate([
-            'nama_barang' => 'required|string|max:255',
-            'harga' => 'required|numeric|min:0',
-            'stok' => 'required|integer|min:0',
-        ]);
+            $request->validate([
+                'nama_barang' => 'required|string|max:255',
+                'harga' => 'required|numeric|min:1000',
+                'stok' => 'required|integer|min:1',
+            ]);
 
-        $hpp = $request->hpp ?? ($request->harga + ($request->harga * 0.1));
+            if ($request->harga % 1000 !== 0) {
+                return redirect()->back()->with('error', 'Harga harus dalam satuan ribuan!')->withInput();
+            }
 
-        $barang->update([
-            'nama_barang' => $request->nama_barang,
-            'harga' => $hpp,
-            'stok' => $request->stok,
-            'hpp' => $request->harga,
-        ]);
+            $hpp = $request->harga;
+            $harga_jual = $hpp + ($hpp * 0.1);
 
-        return redirect()->route('barang.index')->with('success', 'Barang berhasil diperbarui!');
+            $barang->update([
+                'nama_barang' => $request->nama_barang,
+                'harga' => $harga_jual,
+                'stok' => $request->stok,
+                'hpp' => $hpp,
+            ]);
+
+            return redirect()->route('barang.index')->with('success', 'Barang berhasil diperbarui!');
+        } catch (\Exception $e) {
+            return redirect()->route('barang.index')->with('error', 'Barang gagal diperbarui!');
+        }
     }
 
     // Hapus barang

@@ -18,7 +18,7 @@
         </div>
 
         <div class="form-group">
-            <label for="harga">Harga</label>
+            <label for="harga">HPP</label>
             <input type="number" name="harga" id="harga" required>
         </div>
 
