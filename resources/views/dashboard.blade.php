@@ -17,23 +17,10 @@
                 </div>
 
                 <div class="menu-section">
-                    <a href="{{ route('barang.index') }}" class="menu-btn">
-                        <span>Manajemen Stok</span>
-                    </a>
-
-                    <div class="main-content create-barang"></div>
-
-                    <a href="{{ route('transaksi.index') }}" class="menu-btn">
-                        <span>Transaksi</span>
-                    </a>
-
-                    <a href="{{ route('riwayat-transaksi.index') }}" class="menu-btn">
-                        <span>Riwayat Transaksi</span>
-                    </a>
-
-                    <a href="{{ route('laporan.index') }}" class="menu-btn">
-                        <span>Laporan</span>
-                    </a>
+                    <a href="{{ route('barang.index') }}" class="menu-btn"><span>Manajemen Stok</span></a>
+                    <a href="{{ route('transaksi.index') }}" class="menu-btn"><span>Transaksi</span></a>
+                    <a href="{{ route('riwayat-transaksi.index') }}" class="menu-btn"><span>Riwayat Transaksi</span></a>
+                    <a href="{{ route('laporan.index') }}" class="menu-btn"><span>Laporan</span></a>
                 </div>
             </div>
 
@@ -45,9 +32,9 @@
             </div>
         </div>
 
-        <!-- Konten Utama -->
+        <!-- Main Content -->
         <div class="main-content">
-            <iframe id="content-frame" src="{{ route('welcome-admin') }}"></iframe>
+            <iframe id="content-frame" src=""></iframe>
         </div>
     </div>
 </div>

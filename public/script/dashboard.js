@@ -3,33 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuButtons = document.querySelectorAll(".menu-btn");
     const logoBtn = document.getElementById("logo-btn");
 
+    // Klik tombol menu -> load route ke iframe
     menuButtons.forEach((btn) => {
         btn.addEventListener("click", function (e) {
             e.preventDefault();
             iframe.src = this.getAttribute("href");
-        });
-    });
-
-    logoBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        iframe.src = "/dashboard/welcome";
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".menu-btn");
-    const logo = document.querySelector(".logo-img");
-
-    buttons.forEach((btn) => {
-        btn.addEventListener("click", function () {
-            buttons.forEach((b) => b.classList.remove("active"));
+            menuButtons.forEach((b) => b.classList.remove("active"));
             this.classList.add("active");
         });
     });
 
-    if (logo) {
-        logo.addEventListener("click", function () {
-            buttons.forEach((b) => b.classList.remove("active"));
-        });
-    }
+    // Klik logo -> kosongkan iframe
+    logoBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        iframe.src = "";
+        menuButtons.forEach((b) => b.classList.remove("active"));
+    });
 });

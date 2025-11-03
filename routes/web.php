@@ -26,9 +26,6 @@ Route::post('/logout', function (Request $request) {
 // Dashboard
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
-    Route::get('/dashboard/welcome', function () {
-        return view('welcome_admin');
-    })->name('welcome-admin');
 });
 
 // Barang
