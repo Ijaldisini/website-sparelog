@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TransaksiToko;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,6 +22,10 @@ class DatabaseSeeder extends Seeder
             Users::class,
             Supplier::class,
             Barang::class,
+            TransaksiSeeder::class,
+            TransaksiDetailSeeder::class,
+            TransaksiTokoSeeder::class,
+            TransaksiTokoDetailSeeder::class,
         ]);
     }
 }

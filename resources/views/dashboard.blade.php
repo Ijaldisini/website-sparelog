@@ -19,7 +19,7 @@
                 <div class="menu-section">
                     <a href="{{ route('barang.index') }}" class="menu-btn"><span>Manajemen Stok</span></a>
                     <a href="{{ route('transaksi.index') }}" class="menu-btn"><span>Transaksi</span></a>
-                    <a href="{{ route('riwayat-transaksi.index') }}" class="menu-btn"><span>Riwayat Transaksi</span></a>
+                    <a href="{{ route('riwayat.index') }}" class="menu-btn"><span>Riwayat Transaksi</span></a>
                     <a href="{{ route('laporan.index') }}" class="menu-btn"><span>Laporan</span></a>
                 </div>
             </div>

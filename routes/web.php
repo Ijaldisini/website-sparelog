@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransaksiTokoController;
+use App\Http\Controllers\RiwayatTransaksiController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -42,8 +43,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Riwayat Transaksi
-Route::middleware('auth')->group(function () {
-    Route::resource('riwayat-transaksi', App\Http\Controllers\RiwayatTransaksi::class);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/riwayat', [RiwayatTransaksiController::class, 'index'])->name('riwayat.index');
+    Route::get('/riwayat/toko', [RiwayatTransaksiController::class, 'toko'])->name('riwayat.toko');
 });
 
 // Laporan
