@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\TransaksiController;
-
+use App\Http\Controllers\TransaksiTokoController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -36,6 +36,8 @@ Route::resource('barang', BarangController::class)->middleware('auth');
 Route::middleware(['auth'])->group(function () {
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
     Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
+    Route::get('/transaksi/toko', [TransaksiTokoController::class, 'index'])->name('toko.index');
+    Route::post('/transaksi/toko', [TransaksiTokoController::class, 'store'])->name('toko.store');
     Route::get('/api/barang/{nama}', [TransaksiController::class, 'getHarga']);
 });
 
