@@ -6,71 +6,17 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
+
 class Barang extends Seeder
 {
     public function run(): void
     {
-        $barangList = [
-            // Peralatan Bengkel
-            'Obeng Minus' => 8000,
-            'Obeng Plus' => 9000,
-            'Tang Kombinasi' => 25000,
-            'Tang Potong' => 27000,
-            'Tang Cucut' => 30000,
-            'Kunci Inggris' => 75000,
-            'Kunci Ring Set' => 180000,
-            'Dongkrak Hidrolik' => 450000,
-            'Kompresor Mini' => 850000,
-            'Alat Las Mini' => 950000,
-
-            // Sparepart Motor
-            'Busi Motor' => 15000,
-            'Oli Motor' => 45000,
-            'Rantai Motor' => 85000,
-            'Kampas Rem Motor' => 30000,
-            'Klakson Motor' => 25000,
-            'Spion Motor' => 40000,
-            'Lampu Depan Motor' => 25000,
-            'Ban Depan Motor' => 180000,
-            'Ban Belakang Motor' => 200000,
-            'Velg Racing Motor' => 350000,
-
-            // Kelistrikan
-            'Kabel Listrik' => 12000,
-            'Lampu LED 5W' => 10000,
-            'Lampu LED 10W' => 15000,
-            'Lampu Sorot' => 45000,
-            'Adaptor 12V' => 25000,
-            'Power Supply 5A' => 75000,
-            'Terminal Listrik' => 3000,
-            'Fuse 10A' => 2000,
-
-            // Lain-lain
-            'Lakban Hitam' => 10000,
-            'Tali Rafia' => 8000,
-            'Sarung Tangan Kerja' => 25000,
-            'Masker Debu' => 5000,
-            'Kacamata Safety' => 20000,
-            'Sepatu Safety' => 350000,
-        ];
-
-        $barangData = [];
-
-        foreach ($barangList as $nama => $harga) {
-            $hpp = $harga - ($harga * 0.1);
-
-            $barangData[] = [
-                'nama_barang' => $nama,
-                'harga' => $harga,
-                'stok' => rand(10, 200),
-                'hpp' => $hpp,
-                'tanggal_masuk' => Carbon::now()->subDays(rand(0, 60)),
-                'id_supplier' => rand(1, 25),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ];
-        }
-
-        DB::table('barang')->insert($barangData);
+        DB::table('barang')->insert([
+            ['nama_barang' => 'Oli Mesin Federal Supreme XX', 'harga' => 55000, 'stok' => 100, 'tanggal_masuk' => '2025-10-30', 'hpp' => 45000, 'id_supplier' => 5],
+            ['nama_barang' => 'Kampas Rem Depan Honda Beat', 'harga' => 30000, 'stok' => 80, 'tanggal_masuk' => '2025-10-31', 'hpp' => 25000, 'id_supplier' => 3],
+            ['nama_barang' => 'Busi NGK CPR8EA-9', 'harga' => 25000, 'stok' => 60, 'tanggal_masuk' => '2025-11-01', 'hpp' => 20000, 'id_supplier' => 4],
+            ['nama_barang' => 'Filter Oli Yamaha Mio', 'harga' => 22000, 'stok' => 70, 'tanggal_masuk' => '2025-11-02', 'hpp' => 18000, 'id_supplier' => 2],
+            ['nama_barang' => 'Ban Luar IRC NR76 80/90-14', 'harga' => 150000, 'stok' => 40, 'tanggal_masuk' => '2025-11-03', 'hpp' => 135000, 'id_supplier' => 1],
+        ]);
     }
 }
