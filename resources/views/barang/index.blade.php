@@ -17,7 +17,7 @@
                 <h2 class="page-title">Semua Stok</h2>
             </div>
             <div class="header-right">
-                <a href="{{ route('barang.create') }}" class="btn-add">+ Tambah</a>
+                <a href="{{ route('barang.create') }}" class="btn-add">Tambah</a>
             </div>
         </div>
 
@@ -47,13 +47,14 @@
                         <td class="price-cell">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
                         <td class="action-cell">
                             <a href="{{ route('barang.edit', $item->id) }}" class="btn-action btn-edit" title="Edit">
-                                <span>✏️</span>
+                                <img src="{{ asset('images/update.png') }}" alt="Edit" class="icon-btn">
                             </a>
+
                             <form action="{{ route('barang.destroy', $item->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn-action btn-delete" data-id="{{ $item->id }}" title="Hapus">
-                                    <span>🗑️</span>
+                                    <img src="{{ asset('images/delete.png') }}" alt="Delete" class="icon-btn">
                                 </button>
                             </form>
                         </td>
