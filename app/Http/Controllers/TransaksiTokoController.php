@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\TransaksiToko;
-use App\Models\DetailTransaksiToko;
+use App\Models\TransaksiTokoDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -42,12 +42,13 @@ class TransaksiTokoController extends Controller
                 $subtotal = $barang->harga * (int) $b['jumlah'];
                 $total += $subtotal;
 
-                DetailTransaksiToko::create([
-                    'transaksi_toko_id' => $transaksi->id,
+                TransaksiTokoDetail::create([
+                    'transaksi_id' => $transaksi->id,
                     'barang_id' => $barang->id,
                     'jumlah' => $b['jumlah'],
                     'subtotal' => $subtotal,
                 ]);
+
 
                 $barang->decrement('stok', $b['jumlah']);
             }

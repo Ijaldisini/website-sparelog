@@ -14,11 +14,11 @@ class TransaksiTokoDetail extends Model
 
     public function transaksi()
     {
-        return $this->belongsTo(TransaksiToko::class, 'transaksi_id', 'id');
+        return $this->belongsTo(TransaksiToko::class, 'transaksi_id');
     }
 
     public function barang()
     {
-        return $this->belongsTo(Barang::class, 'barang_id', 'id');
+        return $this->belongsTo(Barang::class);
     }
 }

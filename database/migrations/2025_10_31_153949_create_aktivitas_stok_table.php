@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('aktivitas_stok', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_barang')->constrained('barang')->onDelete('cascade');
-            $table->enum('jenis_aktivitas', ['tambah', 'kurang']);
+            $table->string('nama_barang');
             $table->integer('jumlah');
-            $table->dateTime('tanggal');
-            $table->string('keterangan')->nullable();
+            $table->decimal('harga_satuan', 15, 2);
+            $table->decimal('total_harga', 15, 2);
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

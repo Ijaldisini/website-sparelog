@@ -22,8 +22,8 @@
 
         <div class="form-group">
             <label for="harga">HPP</label>
-            <input type="number" name="harga" id="harga"
-                value="{{ old('harga', $barang->hpp) }}" required>
+            <input type="text" name="harga" id="harga"
+                value="{{ old('harga', number_format($barang->hpp, 0, ',', '.')) }}" required>
         </div>
 
         <div class="form-group">
@@ -44,7 +44,6 @@
     </form>
 </div>
 
-{{-- Flash data untuk SweetAlert --}}
 <div id="flash-data" data-success="{{ session('success') }}" data-error="{{ session('error') }}"></div>
 @endsection
 

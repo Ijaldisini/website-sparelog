@@ -18,8 +18,8 @@
         </div>
 
         <div class="form-group">
-            <label for="harga">HPP</label>
-            <input type="number" name="harga" id="harga" required>
+            <label for="hpp">HPP</label>
+            <input type="number" name="hpp" id="hpp" required>
         </div>
 
         <div class="form-group">

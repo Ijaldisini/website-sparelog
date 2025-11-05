@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             TransaksiDetailSeeder::class,
             TransaksiTokoSeeder::class,
             TransaksiTokoDetailSeeder::class,
+            AktivitasSeeder::class,
         ]);
     }
 }

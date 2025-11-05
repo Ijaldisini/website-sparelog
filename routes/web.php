@@ -9,6 +9,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransaksiTokoController;
 use App\Http\Controllers\RiwayatTransaksiController;
+use App\Http\Controllers\LaporanController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -49,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Laporan
-Route::middleware('auth')->group(function () {
-    Route::resource('laporan', App\Http\Controllers\Laporan::class);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/laporan', [LaporanController::class, 'pembelian'])->name('laporan.index');
+    Route::get('/laporan/penjualan', [LaporanController::class, 'penjualan'])->name('laporan.penjualan');
 });
