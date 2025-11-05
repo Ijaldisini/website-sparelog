@@ -11,9 +11,6 @@
     <div class="barang-container">
         <div class="page-header">
             <div class="header-left">
-                <div class="back-button">
-                    <a href="{{ url()->previous() }}">← Kembali</a>
-                </div>
                 <h2 class="page-title">Semua Stok</h2>
             </div>
             <div class="header-right">

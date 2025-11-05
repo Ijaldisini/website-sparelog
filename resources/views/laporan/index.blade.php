@@ -7,7 +7,7 @@
 <div class="laporan-wrapper">
     <div class="laporan-container">
         <div class="laporan-header">
-            <h2>💰 Laporan Pembelian</h2>
+            <h2>Laporan Pembelian</h2>
             <div class="tabs">
                 <a href="{{ route('laporan.index') }}" class="tab active">Pembelian</a>
                 <a href="{{ route('laporan.penjualan') }}" class="tab">Penjualan</a>

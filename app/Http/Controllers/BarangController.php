@@ -24,7 +24,7 @@ class BarangController extends Controller
     // Form tambah barang
     public function create()
     {
-        $suppliers = Supplier::all();
+        $suppliers = Supplier::orderBy('nama_supplier', 'asc')->get();
         return view('barang.create', compact('suppliers'));
     }
 

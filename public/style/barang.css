@@ -35,18 +35,6 @@
     gap: 0.5rem;
 }
 
-.back-button a {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: color 0.3s;
-}
-
-.back-button a:hover {
-    color: #5568d3;
-}
-
 .page-title {
     font-size: 2rem;
     font-weight: 700;

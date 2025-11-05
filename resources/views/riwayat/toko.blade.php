@@ -8,7 +8,7 @@
 <div class="riwayat-wrapper">
     <div class="riwayat-container">
         <div class="riwayat-header">
-            <h2>🏪 Riwayat Transaksi Toko</h2>
+            <h2>Riwayat Transaksi Toko</h2>
             <div class="tabs">
                 <a href="{{ route('riwayat.index') }}" class="tab">Pelanggan</a>
                 <a href="{{ route('riwayat.toko') }}" class="tab active">Toko</a>
