@@ -3,6 +3,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('style/laporan.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
 <div class="laporan-wrapper">
     <div class="laporan-container">

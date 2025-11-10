@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ asset('style/transaksi.css') }}">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('script/transaksiToko.js') }}" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
 <div class="transaksi-wrapper">
     <div class="transaksi-container">

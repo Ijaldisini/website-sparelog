@@ -6,11 +6,12 @@
 <link rel="stylesheet" href="{{ asset('style/transaksi.css') }}">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('script/transaksi.js') }}" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
 <div class="transaksi-wrapper">
     <div class="transaksi-container">
         <div class="transaksi-header">
-            <h2>Transaksi oleh Pelanggan</h2>
+            <h2>Transaksi Pelanggan</h2>
             <div class="header-right">
                 <button class="tab active">Pelanggan</button>
                 <a href="{{ route('toko.index') }}" class="tab">Toko</a>

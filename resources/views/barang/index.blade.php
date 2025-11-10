@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ asset('style/barang.css') }}">
 <link rel="stylesheet" href="{{ asset('style/iframe.css') }}">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
 <div class="barang-wrapper">
     <div class="barang-container">
