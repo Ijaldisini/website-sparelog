@@ -53,4 +53,6 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/laporan', [LaporanController::class, 'pembelian'])->name('laporan.index');
     Route::get('/laporan/penjualan', [LaporanController::class, 'penjualan'])->name('laporan.penjualan');
+    Route::get('/laporan/cetak', [LaporanController::class, 'cetakPembelian'])->name('laporan.cetak.index');
+    Route::get('/laporan/penjualan/cetak', [LaporanController::class, 'cetakPenjualan'])->name('laporan.cetak.penjualan');
 });

@@ -12,6 +12,7 @@
             <div class="tabs">
                 <a href="{{ route('laporan.index') }}" class="tab">Pembelian</a>
                 <a href="{{ route('laporan.penjualan') }}" class="tab active">Penjualan</a>
+                <a href="{{ route('laporan.cetak.penjualan') }}" target="_blank" class="btn-cetak">🖨️ Cetak PDF</a>
             </div>
         </div>
 
