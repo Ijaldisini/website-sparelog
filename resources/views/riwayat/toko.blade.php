@@ -16,6 +16,11 @@
             </div>
         </div>
 
+        <form method="GET" action="{{ route('riwayat.toko') }}" class="search-form">
+            <input type="text" name="search" placeholder="Cari nama toko..." value="{{ $query ?? '' }}">
+            <button type="submit">Cari</button>
+        </form>
+
         <div class="table-container">
             <table class="data-table">
                 <thead>
