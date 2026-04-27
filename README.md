@@ -1,59 +1,145 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📦 SpareLog (Inventory & Transaction Management System)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**SpareLog** adalah aplikasi berbasis web yang dibangun menggunakan **Laravel** untuk memanajemen inventaris (stok barang/sparepart), mencatat arus transaksi barang masuk (pembelian dari supplier) dan barang keluar (penjualan/distribusi ke toko), serta menghasilkan laporan rekapan yang terstruktur dalam format PDF.
 
-## About Laravel
+Aplikasi ini dirancang dengan antarmuka yang ramah pengguna (menggunakan Native CSS & Vanilla JS) dan dilengkapi dengan sistem rekam jejak (riwayat) aktivitas stok yang presisi.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Aplikasi SpareLog dibagi menjadi beberapa modul utama:
 
-## Learning Laravel
+### 1. 🔐 Autentikasi & Keamanan
+- **Secure Login:** Sistem autentikasi pengguna.
+- **Prevent Back History:** Menggunakan custom middleware (`PreventBackHistory`) untuk mencegah pengguna menekan tombol *Back* pada browser setelah melakukan *logout*, menjaga keamanan sesi.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 2. 📊 Dashboard Interaktif
+- Menampilkan ringkasan data inventaris, jumlah barang, supplier, dan statistik transaksi secara *real-time*.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 3. 📦 Manajemen Master Data
+- **Katalog Barang:** CRUD (Create, Read, Update, Delete) data barang/sparepart beserta manajemen jumlah stok.
+- **Data Supplier:** Pengelolaan data entitas pemasok barang yang terintegrasi langsung dengan modul transaksi pembelian.
 
-## Laravel Sponsors
+### 4. 🛒 Manajemen Transaksi (Inbound & Outbound)
+Sistem memisahkan arus barang menjadi dua alur transaksi utama:
+- **Transaksi Pembelian (Inbound):** Pencatatan barang masuk dari *Supplier* ke dalam gudang (dikelola oleh `TransaksiController`).
+- **Transaksi Toko (Outbound):** Pencatatan distribusi atau penjualan barang keluar menuju entitas toko/pelanggan (dikelola oleh `TransaksiTokoController`).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 5. 🕒 Riwayat & Monitoring
+- **Riwayat Transaksi:** Melacak setiap *invoice* atau riwayat transaksi yang pernah terjadi, baik dari supplier maupun ke toko.
+- **Aktivitas Stok:** Mencatat setiap perubahan (penambahan/pengurangan) pada stok barang (dikelola oleh tabel `aktivitas_stok`).
 
-### Premium Partners
+### 6. 🖨️ Cetak Laporan (Export to PDF)
+- **Laporan Pembelian & Penjualan:** Modul khusus (`LaporanController`) untuk memfilter data transaksi berdasarkan periode tertentu dan mengekspornya ke dalam format dokumen PDF yang siap cetak.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🛠️ Teknologi & Arsitektur
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Backend:** Laravel (PHP)
+- **Database:** MySQL
+- **Frontend:** Laravel Blade, Native CSS (`public/style/`), Vanilla JavaScript (`public/script/`)
+- **Testing:** PHPUnit
 
-## Code of Conduct
+> **Catatan Frontend:** Proyek ini menggunakan arsitektur tradisional aset langsung. File styling dan interaksi dipanggil langsung melalui helper `asset()` Laravel tanpa kompilasi (tanpa Vite/Webpack), memastikan kesederhanaan *deployment*.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## ⚙️ Persyaratan Sistem
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Pastikan komputer/server Anda telah menginstal:
+- **PHP** (Versi 8.1 atau lebih baru direkomendasikan)
+- **Composer** (Dependency Manager untuk PHP)
+- **MySQL** / MariaDB
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🚀 Panduan Instalasi (Development Lokal)
+
+Ikuti langkah-langkah berikut untuk menjalankan SpareLog di mesin lokal Anda:
+
+### 1. Clone Repositori
+```bash
+git clone [https://github.com/Ijaldisini/website-sparelog.git](https://github.com/Ijaldisini/website-sparelog.git)
+cd website-sparelog
+```
+
+2. Install Dependensi PHP
+```bash
+composer install
+```
+
+### 3. Konfigurasi Environment
+Salin file environment dan sesuaikan dengan konfigurasi database lokal Anda:
+```bash
+cp .env.example .env
+```
+
+Buka file (`.env`) dan atur bagian database (pastikan Anda sudah membuat database kosong bernama (`sparelog_db`) di phpMyAdmin/MySQL Anda):
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sparelog_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4. Generate Application Key
+```bash
+php artisan key:generate
+```
+
+### 5. Migrasi & Seeding Database
+Langkah ini akan membuat seluruh tabel yang dibutuhkan beserta data awal (dummy data) untuk User, Barang, Supplier, dan Transaksi:
+```bash
+php artisan migrate --seed
+```
+
+### 6. Jalankan Server
+Jalankan development server bawaan Laravel:
+```bash
+php artisan serve
+```
+Aplikasi sekarang dapat diakses melalui: (`http://localhost:8000`)
+
+---
+
+## 🔑 Akses Login Default
+
+Setelah melakukan perintah (`--seed`) pada tahap instalasi, Anda dapat masuk ke dalam sistem menggunakan akun yang telah di-generate oleh (`Users`) seeder (Silakan cek file (`database/seeders/Users.php`) untuk kredensial pastinya jika Anda melakukan modifikasi):
+
+- **Email**: (`admin@gmail.com`)
+- **Password**: (`password`)
+
+---
+
+## 📂 Struktur Direktori Penting
+
+Jika Anda ingin melakukan modifikasi pada kode, berikut adalah panduan navigasi source code utama:
+
+- (`app/Http/Controllers/`)
+    - Mengandung logic aplikasi seperti (`BarangController.php`), (`TransaksiController.php`), dan (`LaporanController.php`).
+
+- (`app/Models/`)
+    - Mengandung Eloquent Models seperti (`Barang.php`), (`Supplier.php`), (`Transaksi.php`), dll.
+
+- (`database/migrations/`)
+    - Skema pembentukan struktur database.
+
+- (`public/style/ & public/script/`)
+    - Modifikasi tampilan antarmuka (Native CSS) dan interaktivitas spesifik halaman (Vanilla JS) diletakkan di sini secara modular (misal: (`barang.css`), (`dashboard.js`)).
+
+- resources/views/
+    - Kumpulan file Blade templating, dibagi berdasarkan fitur ((`/barang`), (`/transaksi`), (`/laporan`), dll).
+ 
+---
+
+## 👨‍💻 Kontributor
+Raditya (@Ijaldisini) - Lead Developer
+
+---
+
+## 📄 Lisensi
+Proyek ini dibangun untuk keperluan edukasi dan portofolio pengembangan sistem informasi.
